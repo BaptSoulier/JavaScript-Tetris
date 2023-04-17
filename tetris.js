@@ -211,6 +211,7 @@ let dropCounter = 0; // compte le temps écoulé depuis la dernière chute auto 
 let dropInterval = 500; // Interval de temps entre chaque chute en milliseconde
 let lastTime = 0;// représente  le temps écoulé depuis le démarrage du jeu jusqu'à la dernière mise à jour de l'affichage
 
+
 function update(time = 0){
 	const deltaTime = time - lastTime; // calculer le temps écoulé depuis la dernière mise à jour de l'affichage en soustrayant la valeur de "lastTime" au temps actuel
 	lastTime = time; // MAJ avec la valeur actuelle du temps 
@@ -222,6 +223,7 @@ function update(time = 0){
 
 	draw(); // MAJ de l'affichage 
 	requestAnimationFrame(update); // ddemande au nav de MAJ (boucle infini)
+
 }
 
 //mettre à jour l'affichage du score dans l'interface utilisateur en récupérant l'élément HTML

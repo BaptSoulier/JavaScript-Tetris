@@ -8,6 +8,12 @@
 			width: 98%;
 			height: 50px;
 		}
+		header{
+			background-image: url('R.png');
+			background-size: cover;
+			background-size: 50%;
+
+		}
 		header > h1 {
 			color: #ffffff;
 			text-align: center; 
@@ -21,16 +27,54 @@
 			font-size: 40px;
 			text-align: center;
 		}
+		body{
+			background-image: url('BG.jpg');
+			background-size: cover;
+		}
 		canvas {
 			border: solid .2em #0418f5;
 			height: 82vh;
 		}
+		#pause-button {
+ 			width: 80px;
+  			height: 30px;
+  			border: none;
+  			border-radius: 4px;
+  			background-color: #4CAF50;
+  			color: white;
+  			font-size: 16px;
+  			cursor: pointer;
+			position: absolute;
+  			top: 20px;
+  			right: 20px;
+		}
+
+		#pause-button:hover {
+  			background-color: #3e8e41;
+		}
+		#score {
+  			font-size: 30px;
+  			color: #ffffff;
+  			text-align: center;
+  			margin-top: 10px;
+  			background-color: #0418f5;
+  			padding: 10px;
+  			border-radius: 5px;
+  			width: 200px;
+  			margin-left: auto;
+  			margin-right: auto;
+
+
+
 	</style>
 </head>
 <body>
-	<header><h1>Tetris De BABA et MAMA</h1></header>
+	<header><!--<h1>Tetris De BABA et MAMA</h1>--></header>
+	<br>
 	<div id = "score"></div>
 	<canvas id = "tetris" width="240" height="400"></canvas>
 	<script src="tetris.js"></script>
+	<button id="pause-button">Pause</button>
+
 </body>
 </html>
