@@ -14,6 +14,7 @@
 			font-family: sans-serif;
 			font-size: 40px;
 			text-align: center;
+			
 		}
 		body{
 			background-image: url('BG.jpg');
@@ -22,6 +23,7 @@
 		canvas {
 			border: solid .2em #0418f5;
 			height: 82vh;
+			z-index: 1;
 		}
 		.pause-button {
  			width: 80px;
@@ -70,6 +72,27 @@
  			 background-color: #3e8e41;
 		}
 
+		#playButton {
+  			position: absolute;
+ 			 top: 50%;
+  			left: 50%;
+  			transform: translate(-50%, -50%);
+  			font-size: 2rem;
+  			padding: 1rem 2rem;
+  			background-color: #4CAF50;
+  			color: white;
+  			border: none;
+  			border-radius: 5px;
+  			cursor: pointer;
+			z-index: 0;
+		}
+
+		#playButton.clicked {
+    opacity: 0;
+    z-index: 0;
+}
+	
+		
 
 	</style>
 </head>
@@ -81,6 +104,6 @@
 	<script src="tetris.js"></script>
 	<button class="pause-button" onclick="pauseGame()">Pause</button>
 	<button class="restart-button" onclick="location.reload()">Restart</button>
-
+	<button id="playButton" onclick="lancerJeu()">PLAY</button>
 </body>
 </html>

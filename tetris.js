@@ -1,8 +1,11 @@
 const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
 
-context.scale(20, 20);
-  
+
+
+context.scale(20, 20); 
+
+
 // balayer lorsque ligne complète
 function balayage(){
 	let rowCount = 1; // nombre de ligne nettoyées
@@ -285,6 +288,13 @@ function pauseGame() {
 	Ispaused = !Ispaused; // inverser la valeur 
   }
   
+  var playButton = document.getElementById("playButton"); //permet de recupérer l'element
+  playButton = function() { // appelle la fonction lorsque le bouton est cliqué
+	  lancerJeu();
+  }
+function lancerJeu() {	
+	document.getElementById('playButton').classList.add('clicked'); // permet de passer le bouton au second plan
 playerReset(); //  initialise le jeu avec une nouvelle pièce
 updateScore(); // affiche le score initial
 update(); // boucle du jeu
+}
