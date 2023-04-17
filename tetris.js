@@ -120,11 +120,10 @@ function drawMatrix(matrix, offset,color, squareSize) { //En arguments : une mat
 			if(value !== 0){ //  Si la valeur de l'élément n'est pas égale à zéro
 				context.fillStyle = colors[value]; //  représente une pièce et on utilise la couleur correspondante à cette pièce pour remplir un rectangle de taille 1x1
 				context.fillRect(x + offset.x, y + offset.y,1, 1);
-									if (color) { // dessiner les bords
-										context.strokeStyle = '#fff';
-										context.lineWidth = 0.05;
-										context.strokeRect(x + offset.x, y + offset.y, 1, 1);
-								    }
+				context.strokeRect(x + offset.x, y + offset.y, 1, 1);
+				context.strokeStyle = 'white';
+				context.lineWidth = 0.05;
+				//context.stroke()
 			}
 		});
 	});
@@ -217,6 +216,7 @@ let dropInterval = 500; // Interval de temps entre chaque chute en milliseconde
 let lastTime = 0;// représente  le temps écoulé depuis le démarrage du jeu jusqu'à la dernière mise à jour de l'affichage
 
 
+
 function update(time = 0){
 	const deltaTime = time - lastTime; // calculer le temps écoulé depuis la dernière mise à jour de l'affichage en soustrayant la valeur de "lastTime" au temps actuel
 	lastTime = time; // MAJ avec la valeur actuelle du temps 
@@ -228,7 +228,8 @@ function update(time = 0){
 	
 
 	draw(); // MAJ de l'affichage 
-	requestAnimationFrame(update); // ddemande au nav de MAJ (boucle infini)
+	//requestAnimationFrame(update); // ddemande au nav de MAJ (boucle infini)
+	animationId = requestAnimationFrame(update);
 
 }
 
@@ -274,7 +275,16 @@ document.addEventListener('keydown', event =>{
 	}
 });
 
-
+let Ispaused = false; // le jeu n'est pas en pause
+function pauseGame() {
+	if (Ispaused) { // verifie si le jeu est en pause
+		animationId = requestAnimationFrame(update); // Le jeu n'est pas en pause(mise à false)
+	} else {
+		cancelAnimationFrame(animationId); // si le jeu n'est pas en pause (mise à true)
+	}
+	Ispaused = !Ispaused; // inverser la valeur 
+  }
+  
 playerReset(); //  initialise le jeu avec une nouvelle pièce
 updateScore(); // affiche le score initial
 update(); // boucle du jeu

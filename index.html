@@ -23,7 +23,7 @@
 			border: solid .2em #0418f5;
 			height: 82vh;
 		}
-		#pause-button {
+		.pause-button {
  			width: 80px;
   			height: 30px;
   			border: none;
@@ -37,7 +37,7 @@
   			right: 20px;
 		}
 
-		#pause-button:hover {
+		.pause-button:hover {
   			background-color: #3e8e41;
 		}
 		#score {
@@ -52,7 +52,8 @@
   			margin-left: auto;
   			margin-right: auto;
 		}
-		#restart-button{
+
+		.restart-button {
 			width: 80px;
 			height: 30px;
 			border: none;
@@ -65,6 +66,9 @@
 			top: 20px;
 			left: 20px;
 		}
+		button:hover {
+ 			 background-color: #3e8e41;
+		}
 
 
 	</style>
@@ -75,7 +79,8 @@
 	<div id = "score"></div>
 	<canvas id = "tetris" width="240" height="400"></canvas>
 	<script src="tetris.js"></script>
-	<button id="pause-button">Pause</button>
-	<button id="restart-button">Restart</button>
+	<button class="pause-button" onclick="pauseGame()">Pause</button>
+	<button class="restart-button" onclick="location.reload()">Restart</button>
+
 </body>
 </html>
