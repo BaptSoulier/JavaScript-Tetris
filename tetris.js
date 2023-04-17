@@ -102,28 +102,33 @@ function createPiece(type) {
 	}
 }
 
+
+
 // dessine l'état du jeu en direct 
 function draw() {
 	context.fillStyle = '#000'; 
 	context.fillRect(0,0,canvas.width,canvas.height);// remplie le canvas en noir 
 
 	drawMatrix(arena, {x: 0, y: 0}); // dessine la matrice 'arena' et un objet {x: 0, y: 0} comme deuxième argument
-	drawMatrix(player.matrix, player.pos); // dessine la matrice à la position sur le canvas (position actuelle du joueur)
+	drawMatrix(player.matrix, player.pos, colors[player.color], '#fff'); // dessine la matrice à la position sur le canvas (position actuelle du joueur)
 }
 
 //dessine une matrice dans le canvas
-function drawMatrix(matrix, offset) { //En arguments : une matrice à dessiner et un objet qui contient deux propriétés x et y qui représentent la position à laquelle la matrice sera dessinée sur le canvas
+function drawMatrix(matrix, offset,color, squareSize) { //En arguments : une matrice à dessiner et un objet qui contient deux propriétés x et y qui représentent la position à laquelle la matrice sera dessinée sur le canvas
 	matrix.forEach((row,y) => {
 		row.forEach((value,x) => { // parcour chaque élément de la matrice
 			if(value !== 0){ //  Si la valeur de l'élément n'est pas égale à zéro
 				context.fillStyle = colors[value]; //  représente une pièce et on utilise la couleur correspondante à cette pièce pour remplir un rectangle de taille 1x1
-				context.fillRect(x + offset.x,
-								 y + offset.y,
-								 1, 1);
+				context.fillRect(x + offset.x, y + offset.y,1, 1);
+									if (color) { // dessiner les bords
+										context.strokeStyle = '#fff';
+										context.lineWidth = 0.05;
+										context.strokeRect(x + offset.x, y + offset.y, 1, 1);
+								    }
 			}
 		});
 	});
-}
+}					
 
 function merge(arena, player) { // fusionner la matrice de "player" avec la matrice de "arena" en copiant les valeurs de la matrice "player" dans la matrice "arena"
   player.matrix.forEach((row, y) => {
@@ -220,6 +225,7 @@ function update(time = 0){
 	if(dropCounter > dropInterval){  // représente l'intervalle de temps entre chaque chute automatique
 		playerDrop(); // fais tomber la pièce d'une ligne vers le bas
 	}
+	
 
 	draw(); // MAJ de l'affichage 
 	requestAnimationFrame(update); // ddemande au nav de MAJ (boucle infini)
@@ -267,6 +273,7 @@ document.addEventListener('keydown', event =>{
 		playerRotate(-1); // pivoté anti horaire 
 	}
 });
+
 
 playerReset(); //  initialise le jeu avec une nouvelle pièce
 updateScore(); // affiche le score initial
