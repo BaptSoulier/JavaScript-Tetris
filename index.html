@@ -2,11 +2,11 @@
 <head>
 	<title>Tetris</title>
 	<style>
-		header > h1 {
-			color: #ffffff;
+		h1 {
+			color: #000000;
 			text-align: center; 
 			font-family: Righteous, sans-serif;
-			font-size: 30px;
+			font-size: 10px;
 		}
 		body {
 			background: #202028;
@@ -24,7 +24,13 @@
 			border: solid .2em #0418f5;
 			height: 82vh;
 			z-index: 1;
+			border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
+			opacity: 0,8;
+			border-radius: 5px;
+			box-shadow: 0 0 5px #ffffff;
+			border-radius: 4px;
 		}
+
 		.pause-button {
  			width: 80px;
   			height: 30px;
@@ -43,17 +49,20 @@
   			background-color: #3e8e41;
 		}
 		#score {
-  			font-size: 30px;
-  			color: #ffffff;
-  			text-align: center;
-  			margin-top: 10px;
-  			background-color: #0418f5;
-  			padding: 10px;
-  			border-radius: 5px;
-  			width: 200px;
-  			margin-left: auto;
-  			margin-right: auto;
-		}
+    		font-size: 30px;
+    		color: #ffffff;
+    		text-align: center;
+    		margin-top: 10px;
+    		background-color: #000000;
+    		padding: 10px;
+    		border-radius: 5px;
+    		width: 200px;
+    		margin-left: auto;
+    		margin-right: auto;
+    		box-shadow: 0 0 5px #ffffff;
+    		text-shadow: 0 0 5px #ffffff;
+}
+
 
 		.restart-button {
 			width: 80px;
@@ -91,13 +100,11 @@
    			 opacity: 0;
    			 z-index: 0;
 		}
-	
-		
 
 	</style>
 </head>
 <body>
-	<header><!--<h1>Tetris De BABA et MAMA</h1><--></header>
+	<header><!--<h1>Tetris De BABA et MAMA</h1>--></header>
 	<br>
 	<div id = "score"></div>
 	<canvas id = "tetris" width="240" height="400"></canvas>
@@ -105,5 +112,9 @@
 	<button class="pause-button" onclick="pauseGame()">Pause</button>
 	<button class="restart-button" onclick="location.reload()">Restart</button>
 	<button id="playButton" onclick="lancerJeu()">PLAY</button>
+	
 </body>
+<footer>
+	<h1>Tetris de Baptiste Soulier et Mathieu Mortier</h1>
+</footer>
 </html>

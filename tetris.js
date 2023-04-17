@@ -1,10 +1,7 @@
 const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
 
-
-
 context.scale(20, 20); 
-
 
 // balayer lorsque ligne complète
 function balayage(){
@@ -104,8 +101,6 @@ function createPiece(type) {
 		];
 	}
 }
-
-
 
 // dessine l'état du jeu en direct 
 function draw() {
@@ -218,8 +213,6 @@ let dropCounter = 0; // compte le temps écoulé depuis la dernière chute auto 
 let dropInterval = 500; // Interval de temps entre chaque chute en milliseconde
 let lastTime = 0;// représente  le temps écoulé depuis le démarrage du jeu jusqu'à la dernière mise à jour de l'affichage
 
-
-
 function update(time = 0){
 	const deltaTime = time - lastTime; // calculer le temps écoulé depuis la dernière mise à jour de l'affichage en soustrayant la valeur de "lastTime" au temps actuel
 	lastTime = time; // MAJ avec la valeur actuelle du temps 
@@ -228,12 +221,9 @@ function update(time = 0){
 	if(dropCounter > dropInterval){  // représente l'intervalle de temps entre chaque chute automatique
 		playerDrop(); // fais tomber la pièce d'une ligne vers le bas
 	}
-	
-
 	draw(); // MAJ de l'affichage 
 	//requestAnimationFrame(update); // ddemande au nav de MAJ (boucle infini)
 	animationId = requestAnimationFrame(update);
-
 }
 
 //mettre à jour l'affichage du score dans l'interface utilisateur en récupérant l'élément HTML
@@ -292,6 +282,7 @@ function pauseGame() {
   playButton = function() { // appelle la fonction lorsque le bouton est cliqué
 	  lancerJeu();
   }
+  
 function lancerJeu() {	
 	document.getElementById('playButton').classList.add('clicked'); // permet de passer le bouton au second plan
 playerReset(); //  initialise le jeu avec une nouvelle pièce
