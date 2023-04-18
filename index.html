@@ -100,6 +100,26 @@
    			 opacity: 0;
    			 z-index: 0;
 		}
+		#game-over {
+  			display: none;
+ 			position: absolute;
+  			top: 50%;
+  			left: 50%;
+  			transform: translate(-50%, -50%);
+ 			background-color: #f44336;
+ 			color: #fff;
+ 			font-size: 2em;
+  			font-weight: bold;
+  			padding: 10px;
+  			border-radius: 10px;
+  			text-align: center;
+  			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+		}
+		
+		#game-over.show {
+ 			 display: block;
+		}
+
 
 	</style>
 </head>
@@ -112,7 +132,10 @@
 	<button class="pause-button" onclick="pauseGame()">Pause</button>
 	<button class="restart-button" onclick="location.reload()">Restart</button>
 	<button id="playButton" onclick="lancerJeu()">PLAY</button>
+	<div id="game-over" style="display: none;">Game Over</div>
+
 	
+	  
 </body>
 <footer>
 	<h1>Tetris de Baptiste Soulier et Matthieu Mortier</h1>

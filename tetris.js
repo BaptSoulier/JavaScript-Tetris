@@ -167,8 +167,16 @@ function playerReset() {
 	player.pos.x = (arena[0].length /  2 | 0) - (player.matrix[0].length / 2 | 0); // La position X de la pièce est définie en fonction de la largeur de la grille et de la largeur de la nouvelle pièce
 	if(collision(arena, player)) { // Si une collision est détectée cela signifie que la partie est terminée
 		arena.forEach(row => row.fill(0)); // la matrice est remplie de zéros
-		player.score = 0; // le score du joueur est réinitialisé à zéro
-		updateScore(); // MAJ du score
+		gameOver = true;
+		const gameOverElement = document.getElementById('game-over');
+    	gameOverElement.classList.add('game-over');
+        document.getElementById('score').innerHTML = "Game Over";
+        cancelAnimationFrame(animationId);
+		if (gameOver) {
+			document.getElementById('game-over').style.display = 'block';
+  		} else {
+			playerReset();
+ 		}
 	}
 }	
 
@@ -267,6 +275,7 @@ document.addEventListener('keydown', event =>{
 		playerRotate(-1); // pivoté anti horaire 
 	}
 });
+
 
 let Ispaused = false; // le jeu n'est pas en pause
 function pauseGame() {
