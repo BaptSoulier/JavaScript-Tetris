@@ -167,15 +167,15 @@ function playerReset() {
 	player.pos.x = (arena[0].length /  2 | 0) - (player.matrix[0].length / 2 | 0); // La position X de la pièce est définie en fonction de la largeur de la grille et de la largeur de la nouvelle pièce
 	if(collision(arena, player)) { // Si une collision est détectée cela signifie que la partie est terminée
 		arena.forEach(row => row.fill(0)); // la matrice est remplie de zéros
-		gameOver = true;
-		const gameOverElement = document.getElementById('game-over');
+		gameOver = true; //si partie terminé
+		const gameOverElement = document.getElementById('game-over');// récupère l'html
     	gameOverElement.classList.add('game-over');
         document.getElementById('score').innerHTML = "Game Over";
-        cancelAnimationFrame(animationId);
-		if (gameOver) {
-			document.getElementById('game-over').style.display = 'block';
+        cancelAnimationFrame(animationId); // jeu s'arrete
+		if (gameOver) { // si perdu
+			document.getElementById('game-over').style.display = 'block'; // affiche le GAME OVER
   		} else {
-			playerReset();
+			playerReset(); // sinon redemarre le jeu
  		}
 	}
 }	
